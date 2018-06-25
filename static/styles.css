@@ -1,0 +1,14 @@
+menu {
+	padding: 0.5em 0em;
+}
+
+#histo {
+	width: 400;
+	height: 400;
+}
+
+#app {
+	padding-top: 2em;
+	margin: auto;
+	width: 90%;
+}
