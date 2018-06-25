@@ -15,9 +15,6 @@ func Login(c echo.Context) error {
 	username := c.QueryParam("username")
 	password := c.QueryParam("password")
 
-	//fmt.Println(username)
-	//fmt.Println(password)
-
 	if model.CheckLogin(username, password) == false {
 		fmt.Println("Erreur de connection")
 		return c.String(http.StatusUnauthorized, "Bad login & password")
@@ -32,15 +29,15 @@ func Login(c echo.Context) error {
 
 func createJWTToken(username string) (string, error) {
 
-	// Create token
+	// Création jeton
 	token := jwt.New(jwt.SigningMethodHS512)
 
-	// Set claims
+	// Paramètres du jeton
 	claims := token.Claims.(jwt.MapClaims)
 	claims["sub"] = username
 	claims["exp"] = time.Now().Add(time.Hour * 12).Unix()
 
-	// Generate encoded token and send it as response.
+	// Encodage du jeton et envoi
 	t, err := token.SignedString([]byte("poztit"))
 	if err != nil {
 		return "", err

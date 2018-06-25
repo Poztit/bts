@@ -5,7 +5,7 @@ import (
 	"apiscpam/model"
 
 	"github.com/labstack/echo"
-	//"github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/middleware"
 )
 
 const (
@@ -13,7 +13,7 @@ const (
 )
 
 /*
---/ --> index.html @
+----/--> index.html @
 	|
 	static --> static @
 	|
@@ -43,13 +43,10 @@ func main() {
 
 	// API
 	apiGroup := e.Group("/api")
-
-	/*
-		apiGroup.Use(middleware.JWTWithConfig(middleware.JWTConfig{
-			SigningMethod: "HS512",
-			SigningKey:    []byte("poztit"),
-		}))
-	*/
+	apiGroup.Use(middleware.JWTWithConfig(middleware.JWTConfig{
+		SigningMethod: "HS512",
+		SigningKey:    []byte("poztit"),
+	}))
 
 	// Mesures
 	apiGroup.POST("/mesure", handler.PostMesure)

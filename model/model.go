@@ -48,9 +48,6 @@ func CloseDB() {
 func CheckLogin(username string, password string) bool {
 	var name string
 
-	//fmt.Println("hello", "hello")
-	//fmt.Println(username, password)
-
 	err := database.QueryRow(`
 		SELECT nom FROM utilisateur
 		WHERE utilisateur.nom='admin' AND utilisateur.motdepasse='admin'
@@ -184,7 +181,7 @@ func AddCapteur(s *Capteur) error {
 	return err
 }
 
-// Utils
+// Fonction utile
 
 func round(n, nearest float64) float64 {
 	return math.Round(n/nearest) * nearest

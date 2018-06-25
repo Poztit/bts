@@ -55,8 +55,8 @@ function loadParcelle(id) {
 		headers: {'Authorization': "Bearer " + sessionStorage.token}
 	};
 
-	//console.log(config);
 	/*
+	console.log(config);
 	axios.get('/api/capteur/1', config).then(function (response) {
 		console.log(response.data);
 	})
